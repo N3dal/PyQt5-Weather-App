@@ -16,12 +16,16 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 from sys import argv
+from main_window import MainWindow
 
 
 def main():
     
     app = QApplication(argv)
     
+    root = MainWindow()
+    
+    root.show()
     
     exit(app.exec())
     
