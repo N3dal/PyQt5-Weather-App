@@ -1,0 +1,7 @@
+
+
+MAIN_WINDOW_MAX_WIDTH = 450
+MAIN_WINDOW_MAX_HEIGHT = 650
+
+CLOSE_BUTTON_IMAGE_PATH = r"./assets/close.png"
+MINIMIZE_BUTTON_IMAGE_PATH = r"./assets/minimize.png"
