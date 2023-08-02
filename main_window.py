@@ -6,6 +6,7 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 from defaults import *
+import sys
 
 
 class TitleBar(QFrame):
@@ -59,12 +60,14 @@ class TitleBar(QFrame):
         self.__close_button.setIcon(QIcon(CLOSE_BUTTON_IMAGE_PATH))
         self.__close_button.setIconSize(QSize(24, 24))
         self.__close_button.setCursor(Qt.PointingHandCursor)
+        self.__close_button.clicked.connect(self.__close_button_event)
         self.__close_button.move(MAIN_WINDOW_MAX_WIDTH - 24 - 10, 3)
         
         self.__minimize_button = QPushButton(parent=self)
         self.__minimize_button.setIcon(QIcon(MINIMIZE_BUTTON_IMAGE_PATH))
         self.__minimize_button.setIconSize(QSize(24, 24))
         self.__minimize_button.setCursor(Qt.PointingHandCursor)
+        self.__minimize_button.clicked.connect(self.__minimize_button_event)
         self.__minimize_button.move(MAIN_WINDOW_MAX_WIDTH - 24 * 3 - 10, 3)
         
         self.__title_label = QLabel(parent=self)
@@ -72,9 +75,38 @@ class TitleBar(QFrame):
         self.__title_label.setText(self.__title)
         self.__title_label.move((TitleBar.WIDTH - (len(self.__title) * 10)) // 2, 6)
         
+    
+    def __close_button_event(self):
+        """
+            ::ARGS::
+                None;
+                
+            ::INFO::
+                event call when the close button is clicked;
+                
+            ::RETURNS::
+                return None;
+        """ 
         
+        sys.exit(0)
         
+        return None
+      
+    def __minimize_button_event(self):
+        """
+            ::ARGS::
+                None;
+                
+            ::INFO::
+                event call when the minimize button is clicked;
+                
+            ::RETURNS::
+                return None;
+        """ 
         
+        self.parent().showMinimized()
+        
+        return None
         
     def set_title(self, title:str) -> None:
         """
