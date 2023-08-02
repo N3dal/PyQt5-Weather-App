@@ -25,6 +25,11 @@ class TitleBar(QFrame):
         border-bottom-left-radius: 0px;
     """
     
+    TITLE_LABEL_STYLESHEET = """
+        color: black;
+        font-size: 20px;
+    """
+    
     
     
     def __init__(self, *args, **kwargs):
@@ -62,6 +67,11 @@ class TitleBar(QFrame):
         self.__minimize_button.setCursor(Qt.PointingHandCursor)
         self.__minimize_button.move(MAIN_WINDOW_MAX_WIDTH - 24 * 3 - 10, 3)
         
+        self.__title_label = QLabel(parent=self)
+        self.__title_label.setStyleSheet(TitleBar.TITLE_LABEL_STYLESHEET)
+        self.__title_label.setText(self.__title)
+        self.__title_label.move((TitleBar.WIDTH - (len(self.__title) * 10)) // 2, 6)
+        
         
         
         
@@ -79,6 +89,10 @@ class TitleBar(QFrame):
         """
         
         self.__title = title
+        
+        self.__title_label.setText(self.__title)
+        self.__title_label.move((TitleBar.WIDTH - (len(self.__title) * 10)) // 2, 6)
+        
         
         return None 
 
