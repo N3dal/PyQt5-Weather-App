@@ -177,7 +177,7 @@ class MainFrame(QFrame):
         
         self.data_view_widget = DataViewFrame(parent=self)
         
-        self.data_view_widget.move((MainFrame.WIDTH - DataViewFrame.WIDTH) // 2, 125)
+        self.data_view_widget.move((MainFrame.WIDTH - DataViewFrame.WIDTH) // 2, 225)
         
         
         return None

@@ -12,12 +12,12 @@ class DataViewFrame(QFrame):
     """
     
     STYLESHEET = """
-        border: 2px solid black;
+        border: 0px solid black;
         border-radius: 15px;
     
     """
     
-    WIDTH = 350
+    WIDTH = 400
     HEIGHT = 200
     
     def __init__(self, *args, **kwargs):
@@ -39,6 +39,10 @@ class DataViewFrame(QFrame):
             ::RETURNS::
                 return None;
         """  
+        
+        label = QLabel(parent=self, text="TEST")
+        
+        label.move(10, 10)
         
         return None
 
