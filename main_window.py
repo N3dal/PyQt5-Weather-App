@@ -2,11 +2,12 @@
     Docstring;
 """
 
+import sys
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 from defaults import *
-import sys
+from custom_ui import *
 
 
 class TitleBar(QFrame):
@@ -133,8 +134,8 @@ class MainFrame(QFrame):
     
     windows = []
     
-    STYLESHEET = """
-        background-color: qlineargradient(x1: 0, x2: 3, stop: 0 #1f4284, stop: 1 #56caef);
+    STYLESHEET = f"""
+        background-image: url({MAIN_WINDOW_BACKGROUND_IMAGE_PATH});
         border-top-right-radius: 0px;
         border-top-left-radius: 0px;
         border-bottom-right-radius: 10px;
@@ -157,9 +158,29 @@ class MainFrame(QFrame):
         
         self.setFixedSize(MainFrame.WIDTH, MainFrame.HEIGHT)
         
-        
+        self.__setup_ui()
         
         MainFrame.windows.append(self)
+        
+        
+    def __setup_ui(self):
+        """
+            ::ARGS::
+                None;
+                
+            ::INFO::
+                setup the ui for the MainFrame;
+                
+            ::RETURNS::
+                return None;
+        """  
+        
+        self.data_view_widget = DataViewFrame(parent=self)
+        
+        self.data_view_widget.move((MainFrame.WIDTH - DataViewFrame.WIDTH) // 2, 125)
+        
+        
+        return None
 
 
 class MainWindow(QMainWindow):

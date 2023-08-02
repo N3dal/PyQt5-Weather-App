@@ -6,24 +6,25 @@ from defaults import *
 import sys
 
 
-class DataViewWidget(QWidget):
+class DataViewFrame(QFrame):
     """
         used to view the weather data;
     """
     
     STYLESHEET = """
-        border: solid black 2px;
+        border: 2px solid black;
+        border-radius: 15px;
     
     """
     
-    WIDTH = 200
+    WIDTH = 350
     HEIGHT = 200
     
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         
-        self.setFixedSize(DataViewWidget.WIDTH, DataViewWidget.HEIGHT)
-        self.setStyleSheet(DataViewWidget.STYLESHEET)
+        self.setFixedSize(DataViewFrame.WIDTH, DataViewFrame.HEIGHT)
+        self.setStyleSheet(DataViewFrame.STYLESHEET)
         
         self.__setup_ui()
     
@@ -33,7 +34,7 @@ class DataViewWidget(QWidget):
                 None;
                 
             ::INFO::
-                setup the ui for the DataViewWidget;
+                setup the ui for the DataViewFrame;
                 
             ::RETURNS::
                 return None;
