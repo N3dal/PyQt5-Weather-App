@@ -176,6 +176,12 @@ class MainFrame(QFrame):
         """  
         
         self.data_view_widget = DataViewFrame(parent=self)
+        self.data_view_widget.set_temperature(38.4)
+        self.data_view_widget.set_weather_status("Rainy")
+        self.data_view_widget.set_wind_speed(13)
+        self.data_view_widget.set_is_day_value(True)
+        self.data_view_widget.set_time("03-08-2023T22:07")
+        self.data_view_widget.update_content()
         
         self.data_view_widget.move((MainFrame.WIDTH - DataViewFrame.WIDTH) // 2, 225)
         
