@@ -140,7 +140,7 @@ class DataViewFrame(QFrame):
         
         return None
 
-class SearchWidget(QFrame):
+class SearchWidget(QWidget):
     """
         Docstring;
     """
@@ -180,7 +180,7 @@ class SearchWidget(QFrame):
         
         self.__search_box = QLineEdit(parent=self)
         self.__search_box.setPlaceholderText("City Name")
-        self.__search_box.setStyleSheet("border: none;")
+        self.__search_box.setStyleSheet(SearchWidget.STYLESHEET)
         self.__search_box.setFixedSize(SearchWidget.WIDTH - 10, SearchWidget.HEIGHT - 10)
         self.__search_box.setAlignment(Qt.AlignCenter)
         self.__search_box.setMaxLength(SearchWidget.MAX_CHAR_COUNT)
