@@ -75,7 +75,7 @@ class DataViewFrame(QFrame):
         """"""
         self.temperature_label.setText(str(self.temperature_value) + "°C")
         self.weather_status_label.setText(str(self.weather_status))
-        self.wind_speed_label.setText("Wind-Speed: " + str(self.wind_speed_value))
+        self.wind_speed_label.setText("Wind-Speed: " + str(self.wind_speed_value) + "-Km/H")
         self.is_day_label.setText("State: " + "Day" if self.is_day else "Night")
         self.time_label.setText(self.time_value)
 
@@ -140,16 +140,40 @@ class DataViewFrame(QFrame):
         
         return None
 
-class SearchWidget(QWidget):
+class SearchWidget(QFrame):
     """
         Docstring;
     """
     
     STYLESHEET = """
-    
+        background: transparent;
+        border: 2px solid black;
+        border-radius: 10px;
+        color: white;
+        font-size: 24px;
     """
+    
+    WIDTH = 320
+    HEIGHT = 70
+    
+    
     
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         
-        pass
+        self.setStyleSheet(SearchWidget.STYLESHEET)
+        self.setFixedSize(SearchWidget.WIDTH, SearchWidget.HEIGHT)
+        
+        self.search_text = ""
+        
+        self.setup_ui()
+        
+    def setup_ui(self):
+        """"""
+        
+        self.__search_box = QLineEdit(parent=self)
+        self.__search_box.setPlaceholderText("City Name")
+        self.__search_box.setStyleSheet("border: none;")
+        self.__search_box.setFixedSize(SearchWidget.WIDTH - 10, SearchWidget.HEIGHT - 10)
+        self.__search_box.setAlignment(Qt.AlignCenter)
+        self.__search_box.move(5, 5)

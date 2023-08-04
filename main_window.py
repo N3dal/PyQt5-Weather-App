@@ -173,7 +173,11 @@ class MainFrame(QFrame):
                 
             ::RETURNS::
                 return None;
-        """  
+        """
+        
+        self.search_box = SearchWidget(parent=self)
+        
+        self.search_box.move((MainFrame.WIDTH - SearchWidget.WIDTH) // 2, 40)
         
         self.data_view_widget = DataViewFrame(parent=self)
         self.data_view_widget.set_temperature(38.4)
