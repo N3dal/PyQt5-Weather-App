@@ -156,13 +156,20 @@ class SearchWidget(QFrame):
     WIDTH = 320
     HEIGHT = 70
     
+    MAX_CHAR_COUNT = 35
     
+    class Signals(QObject):
+        """"""
+        
+        text_changed = pyqtSignal(str)
     
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         
         self.setStyleSheet(SearchWidget.STYLESHEET)
         self.setFixedSize(SearchWidget.WIDTH, SearchWidget.HEIGHT)
+        
+        self.signals = SearchWidget.Signals()
         
         self.search_text = ""
         
@@ -176,4 +183,13 @@ class SearchWidget(QFrame):
         self.__search_box.setStyleSheet("border: none;")
         self.__search_box.setFixedSize(SearchWidget.WIDTH - 10, SearchWidget.HEIGHT - 10)
         self.__search_box.setAlignment(Qt.AlignCenter)
+        self.__search_box.setMaxLength(SearchWidget.MAX_CHAR_COUNT)
+        self.__search_box.textChanged.connect(self.__text_changed_event)
         self.__search_box.move(5, 5)
+        
+        
+    def __text_changed_event(self, text: str):
+        """"""
+        self.signals.text_changed.emit(text)
+        
+        return None
