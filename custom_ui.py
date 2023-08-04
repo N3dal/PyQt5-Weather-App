@@ -162,6 +162,7 @@ class SearchWidget(QWidget):
         """"""
         
         text_changed = pyqtSignal(str)
+        enter_key_pressed = pyqtSignal()
     
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -191,5 +192,16 @@ class SearchWidget(QWidget):
     def __text_changed_event(self, text: str):
         """"""
         self.signals.text_changed.emit(text)
+        
+        return None
+    
+    def keyPressEvent(self, e):
+        """"""
+        # print(dir(e))
+        ENTER_KEY = 6
+        
+        
+        if e.type() == ENTER_KEY:
+            self.signals.enter_key_pressed.emit()
         
         return None

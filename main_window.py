@@ -176,7 +176,7 @@ class MainFrame(QFrame):
         """
         
         self.search_box = SearchWidget(parent=self)
-        
+        self.search_box.signals.enter_key_pressed.connect(self.__search_box_event)
         self.search_box.move((MainFrame.WIDTH - SearchWidget.WIDTH) // 2, 40)
         
         self.data_view_widget = DataViewFrame(parent=self)
@@ -192,6 +192,12 @@ class MainFrame(QFrame):
         
         return None
 
+    def __search_box_event(self):
+        """"""
+        
+        print("Searching....")
+        
+        return None
 
 class MainWindow(QMainWindow):
     """
