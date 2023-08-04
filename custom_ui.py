@@ -78,7 +78,14 @@ class DataViewFrame(QFrame):
         self.wind_speed_label.setText("Wind-Speed: " + str(self.wind_speed_value))
         self.is_day_label.setText("State: " + "Day" if self.is_day else "Night")
         self.time_label.setText(self.time_value)
+
+        self.temperature_label.move((DataViewFrame.WIDTH - len(self.temperature_label.text()) * 18) // 2, 20)
+        self.weather_status_label.move((DataViewFrame.WIDTH - len(self.weather_status_label.text()) * 9) // 2, 70)
+        self.wind_speed_label.move(10, 120)
+        self.is_day_label.move(270, 120)
+        self.time_label.move((DataViewFrame.WIDTH - len(self.time_label.text()) * 9) // 2, 170)
         
+
         return None
         
 
